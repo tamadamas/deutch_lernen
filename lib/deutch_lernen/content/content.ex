@@ -14,6 +14,15 @@ defmodule DeutchLernen.Content.Content do
     type :content
   end
 
+  code_interface do
+    define :create
+    define :read
+    define :by_difficulty, args: [:difficulty_level]
+    define :by_type, args: [:content_type]
+    define :update
+    define :destroy
+  end
+
   actions do
     defaults [:read, :destroy, create: :*, update: :*]
 
@@ -32,15 +41,6 @@ defmodule DeutchLernen.Content.Content do
 
       filter expr(content_type == ^arg(:content_type))
     end
-  end
-
-  code_interface do
-    define :create
-    define :read
-    define :by_difficulty, args: [:difficulty_level]
-    define :by_type, args: [:content_type]
-    define :update
-    define :destroy
   end
 
   attributes do
