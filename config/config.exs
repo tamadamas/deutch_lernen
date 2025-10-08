@@ -69,7 +69,7 @@ config :spark,
 config :deutch_lernen,
   ecto_repos: [DeutchLernen.Repo],
   generators: [timestamp_type: :utc_datetime],
-  ash_domains: []
+  ash_domains: [DeutchLernen.Content, DeutchLernen.Vocabulary, DeutchLernen.Learning]
 
 # Configures the endpoint
 config :deutch_lernen, DeutchLernenWeb.Endpoint,
