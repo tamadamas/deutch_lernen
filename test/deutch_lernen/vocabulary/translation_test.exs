@@ -31,6 +31,6 @@ defmodule DeutchLernen.Vocabulary.TranslationTest do
 
   test "validates language constraint", %{word: word} do
     assert {:error, %Ash.Error.Invalid{}} =
-      Translation.create(%{text: "test", language: :de, word_id: word.id})
+             Translation.create(%{text: "test", language: :de, word_id: word.id})
   end
 end

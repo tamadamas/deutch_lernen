@@ -23,7 +23,17 @@ defmodule DeutchLernen.Content.Sentence do
   end
 
   actions do
-    defaults [:read, :destroy, create: :*, update: :*]
+    defaults [:read, :destroy]
+
+    create :create do
+      accept [:text, :position, :translation, :grammar_notes]
+      argument :content_id, :uuid, allow_nil?: false
+      change manage_relationship(:content_id, :content, type: :append_and_remove)
+    end
+
+    update :update do
+      accept [:text, :position, :translation, :grammar_notes]
+    end
 
     read :by_content_ordered do
       argument :content_id, :uuid do
@@ -63,6 +73,7 @@ defmodule DeutchLernen.Content.Sentence do
   relationships do
     belongs_to :content, DeutchLernen.Content.Content do
       allow_nil? false
+      attribute_type :uuid
       attribute_writable? true
     end
   end

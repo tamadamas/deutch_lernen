@@ -9,6 +9,7 @@ defmodule DeutchLernen.Content do
 
   resources do
     resource DeutchLernen.Content.Content
+    resource DeutchLernen.Content.Sentence
     # Resources will be registered here as they are created
   end
 end
