@@ -1,0 +1,21 @@
+#!/bin/sh
+# Auto-format staged files before commit
+
+echo "Running mix format on staged files..."
+
+# Get list of staged .ex and .exs files
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(ex|exs)$')
+
+if [ -n "$STAGED_FILES" ]; then
+  # Format the files
+  mix format $STAGED_FILES
+
+  # Add the formatted files back to staging
+  echo "$STAGED_FILES" | xargs git add
+
+  echo "✓ Files formatted and re-staged"
+else
+  echo "No Elixir files to format"
+fi
+
+exit 0
