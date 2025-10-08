@@ -106,6 +106,7 @@ defmodule DeutchLernen.MixProject do
         "phx.digest"
       ],
       precommit: ["compile --warning-as-errors", "deps.unlock --unused", "format", "test --cover"]
+      ci: ["compile --warning-as-errors", "deps.unlock --unused", "test"]
     ]
   end
 end
