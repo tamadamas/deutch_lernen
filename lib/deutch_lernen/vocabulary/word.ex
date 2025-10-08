@@ -110,13 +110,13 @@ defmodule DeutchLernen.Vocabulary.Word do
     timestamps()
   end
 
-  identities do
-    identity :unique_lemma, [:lemma]
-  end
-
   relationships do
     has_many :translations, DeutchLernen.Vocabulary.Translation do
       destination_attribute :word_id
     end
+  end
+
+  identities do
+    identity :unique_lemma, [:lemma]
   end
 end
