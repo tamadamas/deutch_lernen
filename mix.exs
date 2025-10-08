@@ -105,7 +105,7 @@ defmodule DeutchLernen.MixProject do
         "esbuild deutch_lernen --minify",
         "phx.digest"
       ],
-      precommit: ["compile --warning-as-errors", "deps.unlock --unused", "format", "test"]
+      precommit: ["compile --warning-as-errors", "deps.unlock --unused", "format", "test --cover"]
     ]
   end
 end
