@@ -66,7 +66,17 @@ defmodule DeutchLernen.Vocabulary.Word do
     end
 
     attribute :word_type, :atom do
-      constraints one_of: [:nomen, :verb, :adjektiv, :adverb, :präposition, :konjunktion, :pronomen, :trennbares_verb]
+      constraints one_of: [
+                    :nomen,
+                    :verb,
+                    :adjektiv,
+                    :adverb,
+                    :präposition,
+                    :konjunktion,
+                    :pronomen,
+                    :trennbares_verb
+                  ]
+
       default :nomen
       allow_nil? false
       public? true
@@ -102,5 +112,11 @@ defmodule DeutchLernen.Vocabulary.Word do
 
   identities do
     identity :unique_lemma, [:lemma]
+  end
+
+  relationships do
+    has_many :translations, DeutchLernen.Vocabulary.Translation do
+      destination_attribute :word_id
+    end
   end
 end
