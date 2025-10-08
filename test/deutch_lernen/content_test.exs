@@ -5,12 +5,12 @@ defmodule DeutchLernen.ContentTest do
 
   describe "Content domain" do
     test "is an Ash domain" do
-      assert Content.__ash_domain__?()
+      assert Content.domain?()
     end
 
-    test "can retrieve domain info" do
-      info = Ash.Domain.Info.domain(Content)
-      assert info
+    test "has resources list" do
+      resources = Ash.Domain.Info.resources(Content)
+      assert is_list(resources)
     end
   end
 end
