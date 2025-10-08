@@ -79,4 +79,10 @@ defmodule DeutchLernen.Content.Content do
 
     timestamps()
   end
+
+  relationships do
+    has_many :sentences, DeutchLernen.Content.Sentence do
+      destination_attribute :content_id
+    end
+  end
 end
