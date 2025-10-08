@@ -5,9 +5,10 @@ defmodule DeutchLernen.Content do
   This domain is responsible for books, sentences, and other reading content
   that serves as input for German language learning.
   """
-  use Ash.Domain
+  use Ash.Domain, extensions: [AshGraphql.Domain]
 
   resources do
+    resource DeutchLernen.Content.Content
     # Resources will be registered here as they are created
   end
 end
