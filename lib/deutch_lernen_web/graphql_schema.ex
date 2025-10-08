@@ -2,7 +2,7 @@ defmodule DeutchLernenWeb.GraphqlSchema do
   use Absinthe.Schema
 
   use AshGraphql,
-    domains: [DeutchLernen.Content]
+    domains: [DeutchLernen.Content, DeutchLernen.Vocabulary]
 
   import_types Absinthe.Plug.Types
 

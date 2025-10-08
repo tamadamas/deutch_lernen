@@ -10,13 +10,13 @@ env:
   OTP_VERSION: "27.3.4"
 
 jobs:
-  precommit:
-    name: Run precommit checks
+  ci:
+    name: Run ci checks
     runs-on: ubuntu-latest
 
     services:
       postgres:
-        image: postgres:16
+        image: postgres:18-alpine
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
@@ -51,5 +51,5 @@ jobs:
       - name: Install dependencies
         run: mix deps.get
 
-      - name: Run precommit checks
-        run: mix precommit
+      - name: Run ci checks
+        run: mix ci

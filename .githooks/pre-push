@@ -1,0 +1,15 @@
+#!/bin/sh
+# Run precommit checks before push
+
+echo "Running mix precommit before push..."
+
+mix precommit
+
+if [ $? -ne 0 ]; then
+  echo "❌ Precommit checks failed. Push aborted."
+  echo "Fix the errors and try again."
+  exit 1
+fi
+
+echo "✓ Precommit checks passed"
+exit 0

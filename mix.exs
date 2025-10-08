@@ -94,7 +94,14 @@ defmodule DeutchLernen.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get", "ash.setup", "assets.setup", "assets.build", "run priv/repo/seeds.exs"],
+      setup: [
+        "deps.get",
+        "cmd git config core.hooksPath .githooks",
+        "ash.setup",
+        "assets.setup",
+        "assets.build",
+        "run priv/repo/seeds.exs"
+      ],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ash.setup --quiet", "test"],
@@ -105,7 +112,13 @@ defmodule DeutchLernen.MixProject do
         "esbuild deutch_lernen --minify",
         "phx.digest"
       ],
-      precommit: ["compile --warning-as-errors", "deps.unlock --unused", "format", "test --cover"]
+      precommit: ["compile --warning-as-errors", "deps.unlock --unused", "format", "test"],
+      ci: [
+        "compile --warning-as-errors",
+        "deps.unlock --unused",
+        "format --check-formatted",
+        "test"
+      ]
     ]
   end
 end
